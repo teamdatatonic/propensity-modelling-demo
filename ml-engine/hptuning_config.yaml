@@ -1,0 +1,48 @@
+trainingInput:
+  hyperparameters:
+    goal: MAXIMIZE
+    hyperparameterMetricTag: f1
+    maxTrials: 10
+    maxParallelTrials: 2
+    enableTrialEarlyStopping: True
+    params:
+    - parameterName: batch_size
+      type: DISCRETE
+      discreteValues:
+      - 128
+      - 256
+      - 512
+      - 1024
+    - parameterName: learning_rate
+      type: DOUBLE
+      minValue: 0.0001
+      maxValue: 0.1
+      scaleType: UNIT_LOG_SCALE
+    - parameterName: dropout
+      type: DOUBLE
+      minValue: 0.1
+      maxValue: 0.5
+      scaleType: UNIT_LINEAR_SCALE
+    - parameterName: optimizer
+      type: CATEGORICAL
+      categoricalValues:
+      - Adagrad
+      - ProximalAdagrad
+      - Adam
+    - parameterName: hidden_units
+      type: CATEGORICAL
+      categoricalValues:
+      - '[64, 32]'
+      - '[128, 64]'
+      - '[128, 64, 32]'
+      - '[128, 64, 32, 16]'
+    - parameterName: feature_selection
+      type: CATEGORICAL
+      categoricalValues:
+      - '[1]'
+      - '[1, 2]'
+      - '[1, 2, 3]'
+      - '[1, 2, 3, 4]'
+      - '[1, 2, 3, 4, 5]'
+      - '[1, 2, 3, 4, 5, 6]'
+      - '[1, 2, 3, 4, 5, 6, 7]'
