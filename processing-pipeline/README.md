@@ -1,13 +1,13 @@
 # Brand Propensity Model for Major Retailer
 
 > The purpose of these scripts are to carry out the data processing and
-> feature engineering in **Google BigQuery**.
+> feature engineering in **BigQuery**.
 
 
 ### Raw files required:
 ------
-These were loaded into BigQuery from Google Cloud Storage from .csv format.
-BQ dataset: propensity_dataset
+These were loaded into BigQuery from Cloud Storage from CSV format.
+Big Query dataset: `propensity_dataset`
 - history (promotional information)
 - transactions (transaction table)
 
@@ -39,12 +39,12 @@ SQL queries for feature engineering:
 - `f080_impute_nulls.sql`
 - `f090_type_cast.sql`
 
-SQL queries for splitting into train/test, generating baseline and downsampling:
+SQL queries for splitting into train/dev/test, generating baseline and downsampling:
 - `t010_train_test_field.sql`
 - `t020_train_data.sql`
 - `t030_test_data.sql`
-- `t040_test_validation_split.sql`
-- `t050_validation_data.sql`
+- `t040_test_dev_split.sql`
+- `t050_dev_data.sql`
 - `t060_test_data_final.sql`
 - `b010_create_baseline.sql`
 - `b020_join_baseline.sql`
@@ -61,7 +61,7 @@ Bash script which references SQL queries and runs them sequentially:
 Please enter the GCP project and dataset name as command-line arguments.
 
 1) Create a dataset in BigQuery
-2) Load the "transactions" and "history" tables from GCS into this dataset
+2) Load the "transactions" and "history" tables from Cloud Storage into this dataset
 3) Execute the script with the GCP project and dataset as arguments
 
 ```
@@ -72,4 +72,4 @@ bash bq-processing.sh {PROJECT} {BQ DATASET}
 ------
 Prefix the above command with `/usr/bin/time` to compute the running time.
 
-Total running time: **32 minutes**
+Total running time: **~25 minutes**

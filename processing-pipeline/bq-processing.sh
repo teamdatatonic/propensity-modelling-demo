@@ -1,9 +1,9 @@
 #/bin/bash
 # /usr/bin/time prefix to get the time it took to run script
 
-# Script to run the data processing and feature engineering on the dataset.
+# script to run the data processing and feature engineering on the dataset
 
-# enter project and dataset name as command line args
+# enter GCP project and BigQuery dataset name as command line args
 # ensure that the "transactions" and "history" table are in this dataset
 project=$1
 dataset_name=$2
@@ -17,7 +17,7 @@ crossed_table="customerxbrand"
 feature_table="features"
 train="train"
 test="test"
-validation="validation"
+dev="dev"
 baseline="baseline"
 baseline_metrics="baseline_metrics"
 downsampled="downsampled"
@@ -134,15 +134,15 @@ sed "s/PROJECT/$project/g;s/DATASET/$dataset_name/g" t030_test_data.sql > t030_t
 cat t030_test_data_temp.sql | bq query --destination_table=$dataset.$test --use_legacy_sql=false --allow_large_results
 rm t030_test_data_temp.sql
 
-# create test / validation field
-sed "s/PROJECT/$project/g;s/DATASET/$dataset_name/g" t040_test_validation_split.sql > t040_test_validation_split_temp.sql
-cat t040_test_validation_split_temp.sql | bq query --destination_table=$dataset.$test --use_legacy_sql=true --allow_large_results --replace=true
-rm t040_test_validation_split_temp.sql
+# create test / dev field
+sed "s/PROJECT/$project/g;s/DATASET/$dataset_name/g" t040_test_dev_split.sql > t040_test_dev_split_temp.sql
+cat t040_test_dev_split_temp.sql | bq query --destination_table=$dataset.$test --use_legacy_sql=true --allow_large_results --replace=true
+rm t040_test_dev_split_temp.sql
 
-# create validation data
-sed "s/PROJECT/$project/g;s/DATASET/$dataset_name/g" t050_validation_data.sql > t050_validation_data_temp.sql
-cat t050_validation_data_temp.sql | bq query --destination_table=$dataset.$validation --use_legacy_sql=false --allow_large_results
-rm t050_validation_data_temp.sql
+# create dev data
+sed "s/PROJECT/$project/g;s/DATASET/$dataset_name/g" t050_dev_data.sql > t050_dev_data_temp.sql
+cat t050_dev_data_temp.sql | bq query --destination_table=$dataset.$dev --use_legacy_sql=false --allow_large_results
+rm t050_dev_data_temp.sql
 
 # create final test data
 sed "s/PROJECT/$project/g;s/DATASET/$dataset_name/g" t060_test_data_final.sql > t060_test_data_final_temp.sql

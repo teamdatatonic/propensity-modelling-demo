@@ -1,14 +1,15 @@
 ## Brand Propensity Model for Major Retailer
 
 Python version: 3.5
+TensorFlow version: 1.13.1
 
 ### Folders required in package:
 
 ---
 
-- `exploration/` - SQL queries for exploratory analysis and Tableau workbook
-- `processing-pipeline/` - SQL queries for data preprocessing pipeline in BigQuery
-- `ml-engine/` - python package to train estimators locally and/or using ML Engine with hyperparameter tuning
+- `exploration/` - SQL queries for exploratory analysis
+- `processing-pipeline/` - SQL queries for BigQuery data preprocessing pipeline
+- `ai-platform/` - python package to train estimators locally and/or using AI Platform with hyperparameter tuning
 
 
 ### Files and execution:
@@ -28,9 +29,9 @@ Python version: 3.5
 - `README.md`
 - `bq-processing.sh`
 
-1) Create a dataset in BigQuery
-2) Load "transactions" and "history" datasets from GCS into this BigQuery dataset
-3) Execute bash script with GCP project and dataset as command-line arguments:
+1) Create a dataset in BigQuery (location: EU)
+2) Load "transactions" and "history" datasets from Cloud Storage into this BigQuery dataset
+3) Execute bash script with GCP project and BigQuery dataset as command-line arguments:
 
 ```
 /usr/bin/time bash bq-processing.sh {PROJECT} {BQ DATASET}
@@ -61,57 +62,78 @@ Python version: 3.5
 - `t010_train_test_field.sql`
 - `t020_train_data.sql`
 - `t030_test_data.sql`
-- `t040_test_validation_split.sql`
-- `t050_validation_data.sql`
+- `t040_test_dev_split.sql`
+- `t050_dev_data.sql`
 - `t060_test_data_final.sql`
 - `x010_cross_join.sql`
 
 
-`ml-engine/`:
+`ai-platform/`:
 
-- `requirements.txt` - downloading dependencies locally
+- `requirements.txt` - python dependencies
+- `brand_vocab.csv` - brand vocabulary list
+- `test-predictions/`
+    - `batch_test.json` - sample JSON for running batch predictions (15 lines)
+    - `online_test.json` - sample JSON for running online prediction (1 line)
 - `package/` 
 	- `__init__.py` 
 	- `setup.py` - package dependencies 
 	- `trainer/` 
 		- `__init__.py` 
 		- `task.py` - model train / predict / evaluate using TensorFlow Estimator API
-- `config.yaml` - configuration file for ML Engine training job
-- `hptuning_config.yaml` - configuration file for ML Engine training job with hyperparameter tuning for DNN and WD
-- `local_train.sh` - bash script to train locally in virtual environment (ensure paths are the **full** paths)
+    - `utils.py` - helpful functions for `task.py`
+- `config.yaml` - configuration file for AI Platform training job
+- `hptuning_config.yaml` - configuration file for AI Platform training job with hyperparameter tuning (DNN and WD)
+- `local.sh` - bash script to run train / predict / evaluate locally in virtual environment
 
   ```
   conda create --name propensity_modelling python=3.5
   source activate propensity_modelling
   pip install -r requirements.txt
-  bash local_train.sh {MODEL TYPE} {MODEL DIR} {TRAIN DATA/*.csv} {TEST DATA/*.csv} {SCHEMA PATH}
+  ```
+  
+  Ensure the data and any supporting files are downloaded locally (or on virtual machine) using `gsutil cp` tool.
+  
+  Local training:
+  ```
+  bash local.sh {BUCKET} train {MODEL DIR} {TRAIN DATA/*.csv} {DEV DATA/*.csv} {TEST DATA/*.csv} {SCHEMA PATH} {VOCAB PATH}
+  ```
+  
+  Local predicting:
+  ```
+  bash local.sh {BUCKET} predict {MODEL CHECKPOINTS DIR} {TRAIN DATA/*.csv} {DEV DATA/*.csv} {TEST DATA/*.csv} {SCHEMA PATH} {VOCAB PATH}
+  ```
+  
+  Local evaluating:
+  ```
+  bash local.sh {BUCKET} evaluate {MODEL CHECKPOINTS DIR} {TRAIN DATA/*.csv} {DEV DATA/*.csv} {TEST DATA/*.csv} {SCHEMA PATH} {VOCAB PATH}
   ```
 
-- `train.sh` - bash script to train on ML Engine
+- `train.sh` - bash script to run training on AI Platform
 
 ```
-bash train.sh {MODEL TYPE} {CONFIG} {PROJECT NAME} {BUCKET NAME}
+bash train.sh {PROJECT} {BUCKET}
 ```
 
-- `evaluate.sh` - bash script to run just the evaluation on ML Engine
+- `evaluate.sh` - bash script to run evaluation on AI Platform
 
 ```
-bash evaluate.sh {MODEL TYPE} {JOB NAME} {PROJECT NAME} {BUCKET NAME}
+bash evaluate.sh {JOB NAME} {PROJECT} {BUCKET}
 ```
 
-- `deploy.sh` - bash script to deploy model on ML Engine
+- `deploy.sh` - bash script to deploy selected model on AI Platform
 
 ```
-bash deploy.sh {MODEL TYPE} {VERSION} {BUCKET NAME} {JOBNAME} {SERVING ID}
+bash deploy.sh {VERSION} {BUCKET} {JOBNAME} {SERVING ID}
 ```
 
-- `batch_prediction.sh` - bash script to run batch predictions using deployed model
+- `batch_prediction.sh` - bash script to run batch predictions on AI Platform using deployed model
 
 ```
-bash batch_prediction.sh {MODEL NAME} {VERSION} {BUCKET NAME}
+bash batch_prediction.sh {MODEL NAME} {VERSION} {BUCKET}
 ```
 
-- `online_prediction.sh` - bash script to run online predictions using deployed model
+- `online_prediction.sh` - bash script to run online predictions on AI Platform using deployed model
 
 ```
 bash online_prediction.sh {MODEL NAME} {VERSION}
@@ -127,5 +149,5 @@ tensorboard --logdir=gs://${BUCKET}/models/${MODEL_TYPE}/${JOBNAME}/model
 The **signature** (inputs/outputs) of the saved model can be observed with bash command:
 
 ```
-saved_model_cli show --dir gs://{BUCKET NAME}/models/{MODEL TYPE}/{JOBNAME}/serving/{ID} --tag serve --signature_def predict
+saved_model_cli show --dir gs://{BUCKET}/models/{MODEL TYPE}/{JOBNAME}/serving/{ID} --tag serve --signature_def predict
 ```

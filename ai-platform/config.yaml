@@ -1,0 +1,4 @@
+# configuration file for CUSTOM scale tier AI Platform jobs
+trainingInput:
+  scaleTier: CUSTOM
+  masterType: complex_model_s # n1-highcpu-8

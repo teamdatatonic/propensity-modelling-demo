@@ -13,7 +13,7 @@ FROM (
     customer_id,
     brand
   FROM
-    `PROJECT.DATASET.validation`) a
+    `PROJECT.DATASET.test`) a
 LEFT JOIN
   -- target for whether customer in test set bought in February 2013 or not
   (

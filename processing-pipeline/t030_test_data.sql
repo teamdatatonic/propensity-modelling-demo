@@ -1,5 +1,5 @@
 -- test table
--- create "test"
+-- create "test" table
 
 SELECT
   *

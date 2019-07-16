@@ -10,7 +10,7 @@ FROM (
     brand,
     label
   FROM
-    `PROJECT.DATASET.validation` ) a
+    `PROJECT.DATASET.test` ) a
 INNER JOIN (
   SELECT
     CAST(customer_id AS STRING) AS customer_id_b,

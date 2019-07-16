@@ -3,7 +3,8 @@ __pycache__
 !.gitignore
 data
 model
-build
-dist
 *.egg-info
 .idea
+*.txt
+*.csv
+.DS_Store

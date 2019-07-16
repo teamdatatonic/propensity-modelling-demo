@@ -1,6 +1,8 @@
 -- train / test label split into 80 : 20
 -- overwrite "features" table
 
+-- TODO: best practice is to use a hashing function e.g. FARM_FINGERPRINT
+
 SELECT
   *,
   CASE

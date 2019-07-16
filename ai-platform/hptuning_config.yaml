@@ -1,3 +1,4 @@
+# configuration file for AI Platform hyperparameter tuning jobs (DNN & WD models)
 trainingInput:
   hyperparameters:
     goal: MAXIMIZE
@@ -32,11 +33,11 @@ trainingInput:
     - parameterName: hidden_units
       type: CATEGORICAL
       categoricalValues:
-      - '[64, 32]'
-      - '[128, 64]'
-      - '[128, 64, 32]'
-      - '[128, 64, 32, 16]'
-    - parameterName: feature_selection
+      - '64,32'
+      - '128,64'
+      - '128,64,32'
+      - '128,64,32,16'
+    - parameterName: feature_selec
       type: CATEGORICAL
       categoricalValues:
       - '[1]'

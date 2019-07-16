@@ -37,143 +37,39 @@
   { "mode": "NULLABLE", "name": "distinct_products_12m", "type": "INTEGER" },
   { "mode": "NULLABLE", "name": "distinct_chains_12m", "type": "INTEGER" },
   { "mode": "NULLABLE", "name": "distinct_category_12m", "type": "INTEGER" },
-  {
-    "mode": "NULLABLE",
-    "name": "distinct_days_shopped_12m",
-    "type": "INTEGER"
-  },
+  {"mode": "NULLABLE", "name": "distinct_days_shopped_12m", "type": "INTEGER"},
   { "mode": "NULLABLE", "name": "aov_12m", "type": "INTEGER" },
   { "mode": "NULLABLE", "name": "overall_sale_quantity_1m", "type": "INTEGER" },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_returned_items_1m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_products_1m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_brands_1m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_chains_1m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_category_1m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_days_shopped_1m",
-    "type": "INTEGER"
-  },
+  {"mode": "NULLABLE", "name": "overall_returned_items_1m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_products_1m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_brands_1m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_chains_1m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_category_1m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_days_shopped_1m", "type": "INTEGER"},
   { "mode": "NULLABLE", "name": "overall_aov_1m", "type": "INTEGER" },
   { "mode": "NULLABLE", "name": "overall_sale_quantity_3m", "type": "INTEGER" },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_returned_items_3m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_products_3m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_brands_3m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_chains_3m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_category_3m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_days_shopped_3m",
-    "type": "INTEGER"
-  },
+  {"mode": "NULLABLE", "name": "overall_returned_items_3m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_products_3m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_brands_3m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_chains_3m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_category_3m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_days_shopped_3m", "type": "INTEGER"},
   { "mode": "NULLABLE", "name": "overall_aov_3m", "type": "INTEGER" },
   { "mode": "NULLABLE", "name": "overall_sale_quantity_6m", "type": "INTEGER" },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_returned_items_6m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_products_6m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_brands_6m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_chains_6m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_category_6m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_days_shopped_6m",
-    "type": "INTEGER"
-  },
+  {"mode": "NULLABLE", "name": "overall_returned_items_6m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_products_6m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_brands_6m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_chains_6m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_category_6m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_days_shopped_6m", "type": "INTEGER"},
   { "mode": "NULLABLE", "name": "overall_aov_6m", "type": "INTEGER" },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_sale_quantity_12m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_returned_items_12m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_products_12m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_brands_12m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_chains_12m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_category_12m",
-    "type": "INTEGER"
-  },
-  {
-    "mode": "NULLABLE",
-    "name": "overall_distinct_days_shopped_12m",
-    "type": "INTEGER"
-  },
+  {"mode": "NULLABLE", "name": "overall_sale_quantity_12m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_returned_items_12m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_products_12m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_brands_12m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_chains_12m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_category_12m", "type": "INTEGER"},
+  {"mode": "NULLABLE", "name": "overall_distinct_days_shopped_12m", "type": "INTEGER"},
   { "mode": "NULLABLE", "name": "overall_aov_12m", "type": "INTEGER" },
   { "mode": "NULLABLE", "name": "label", "type": "INTEGER" }
 ]

@@ -3,6 +3,8 @@
 -- legacy SQL = true
 -- save as "downsampled"
 
+-- TODO: best practice is to use a hashing function e.g. FARM_FINGERPRINT
+
 SELECT
   customer_id,
   brand,
