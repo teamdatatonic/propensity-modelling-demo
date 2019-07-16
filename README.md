@@ -81,7 +81,7 @@ TensorFlow version: 1.13.1
 	- `trainer/` 
 		- `__init__.py` 
 		- `task.py` - model train / predict / evaluate using TensorFlow Estimator API
-    - `utils.py` - helpful functions for `task.py`
+        - `utils.py` - helpful functions for `task.py`
 - `config.yaml` - configuration file for AI Platform training job
 - `hptuning_config.yaml` - configuration file for AI Platform training job with hyperparameter tuning (DNN and WD)
 - `local.sh` - bash script to run train / predict / evaluate locally in virtual environment
