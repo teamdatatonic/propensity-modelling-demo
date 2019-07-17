@@ -2,6 +2,7 @@
 
 Python version: 3.5
 TensorFlow version: 1.13.1
+Data: [Acquired Value Shoppers](https://www.kaggle.com/c/acquire-valued-shoppers-challenge)
 
 ### Folders required in package:
 
@@ -29,9 +30,11 @@ TensorFlow version: 1.13.1
 - `README.md`
 - `bq-processing.sh`
 
-1) Create a dataset in BigQuery (location: EU)
-2) Load "transactions" and "history" datasets from Cloud Storage into this BigQuery dataset
-3) Execute bash script with GCP project and BigQuery dataset as command-line arguments:
+1) Download the "transactions" and "history" data from [here](https://www.kaggle.com/c/acquire-valued-shoppers-challenge)
+2) Create a Cloud Storage bucket and upload the CSV files
+3) Create a dataset in BigQuery
+4) Load "transactions" and "history" datasets from Cloud Storage bucket into this BigQuery dataset
+5) Execute bash script with GCP project and BigQuery dataset as command-line arguments:
 
 ```
 /usr/bin/time bash bq-processing.sh {PROJECT} {BQ DATASET}
