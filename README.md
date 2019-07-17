@@ -1,7 +1,9 @@
 ## Brand Propensity Model for Major Retailer
 
 Python version: 3.5
+
 TensorFlow version: 1.13.1
+
 Data: [Acquired Value Shoppers](https://www.kaggle.com/c/acquire-valued-shoppers-challenge)
 
 ### Folders required in package:
