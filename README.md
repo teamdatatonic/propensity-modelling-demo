@@ -39,7 +39,7 @@ Data: [Acquired Value Shoppers](https://www.kaggle.com/c/acquire-valued-shoppers
 5) Execute bash script with GCP project and BigQuery dataset as command-line arguments:
 
 ```
-/usr/bin/time bash bq-processing.sh {PROJECT} {BQ DATASET}
+/usr/bin/time bash bq-processing.sh <GCP PROJECT> <BQ DATASET>
 ```
 
 - `supporting-queries.sql`
@@ -101,58 +101,58 @@ Data: [Acquired Value Shoppers](https://www.kaggle.com/c/acquire-valued-shoppers
   
   Local training:
   ```
-  bash local.sh {BUCKET} train {MODEL DIR} {TRAIN DATA/*.csv} {DEV DATA/*.csv} {TEST DATA/*.csv} {SCHEMA PATH} {VOCAB PATH}
+  bash local.sh <GCS BUCKET> train <MODEL DIR> <TRAIN DATA/*.csv> <DEV DATA/*.csv> <TEST DATA/*.csv> <SCHEMA PATH> <VOCAB PATH>
   ```
   
   Local predicting:
   ```
-  bash local.sh {BUCKET} predict {MODEL CHECKPOINTS DIR} {TRAIN DATA/*.csv} {DEV DATA/*.csv} {TEST DATA/*.csv} {SCHEMA PATH} {VOCAB PATH}
+  bash local.sh <GCS BUCKET> predict <MODEL CHECKPOINTS DIR> <TRAIN DATA/*.csv> <DEV DATA/*.csv> <TEST DATA/*.csv> <SCHEMA PATH> <VOCAB PATH>
   ```
   
   Local evaluating:
   ```
-  bash local.sh {BUCKET} evaluate {MODEL CHECKPOINTS DIR} {TRAIN DATA/*.csv} {DEV DATA/*.csv} {TEST DATA/*.csv} {SCHEMA PATH} {VOCAB PATH}
+  bash local.sh <GCS BUCKET> evaluate <MODEL CHECKPOINTS DIR> <TRAIN DATA/*.csv> <DEV DATA/*.csv> <TEST DATA/*.csv> <SCHEMA PATH> <VOCAB PATH>
   ```
 
 - `train.sh` - bash script to run training on AI Platform
 
 ```
-bash train.sh {PROJECT} {BUCKET}
+bash train.sh <GCP PROJECT> <GCS BUCKET>
 ```
 
 - `evaluate.sh` - bash script to run evaluation on AI Platform
 
 ```
-bash evaluate.sh {JOB NAME} {PROJECT} {BUCKET}
+bash evaluate.sh <JOB NAME> <GCP PROJECT> <GCS BUCKET>
 ```
 
 - `deploy.sh` - bash script to deploy selected model on AI Platform
 
 ```
-bash deploy.sh {VERSION} {BUCKET} {JOBNAME} {SERVING ID}
+bash deploy.sh <VERSION> <GCS BUCKET> <JOB NAME> <SERVING ID>
 ```
 
 - `batch_prediction.sh` - bash script to run batch predictions on AI Platform using deployed model
 
 ```
-bash batch_prediction.sh {MODEL NAME} {VERSION} {BUCKET}
+bash batch_prediction.sh <MODEL NAME> <VERSION> <GCS BUCKET>
 ```
 
 - `online_prediction.sh` - bash script to run online predictions on AI Platform using deployed model
 
 ```
-bash online_prediction.sh {MODEL NAME} {VERSION}
+bash online_prediction.sh <MODEL NAME> <VERSION>
 ```
 
 
 To run **Tensorboard**:
 
 ```
-tensorboard --logdir=gs://${BUCKET}/models/${MODEL_TYPE}/${JOBNAME}/model
+tensorboard --logdir=gs://<GCS BUCKET>/models/<MODEL TYPE>/<JOB NAME>/model
 ```
 
 The **signature** (inputs/outputs) of the saved model can be observed with bash command:
 
 ```
-saved_model_cli show --dir gs://{BUCKET}/models/{MODEL TYPE}/{JOBNAME}/serving/{ID} --tag serve --signature_def predict
+saved_model_cli show --dir gs://<GCS BUCKET>/models/<MODEL TYPE>/<JOB NAME>/serving/<SERVING ID> --tag serve --signature_def predict
 ```
