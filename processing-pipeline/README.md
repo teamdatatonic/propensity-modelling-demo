@@ -65,7 +65,7 @@ Please enter the GCP project and dataset name as command-line arguments.
 3) Execute the script with the GCP project and dataset as arguments
 
 ```
-bash bq-processing.sh {PROJECT} {BQ DATASET}
+bash bq-processing.sh <GCP PROJECT> <BQ DATASET>
 ```
 
 ### Running time:
