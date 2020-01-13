@@ -5,5 +5,4 @@ data
 model
 *.egg-info
 .idea
-*.csv
 .DS_Store
