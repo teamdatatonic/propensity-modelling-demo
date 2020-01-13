@@ -1,5 +1,7 @@
 ## Brand Propensity Model for Major Retailer
 
+Author: Laxmi Prajapat (laxmi.prajapat@datatonic.com)
+
 Python version: 3.5
 
 TensorFlow version: 1.13.1
